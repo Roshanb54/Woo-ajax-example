@@ -38,8 +38,6 @@ if ( ! class_exists( 'Ass_Purchase_Order' ) ) {
 
 			add_filter( 'template_include', [ $this, 'render_purchase_order_page' ], 10, 1 );
 
-			add_action( 'wp_loaded', [ $this, 'ass_process_form' ] );
-
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts'] );
 
 			add_action( 'wp_ajax_nopriv_' . self::AJAX_CALL_ACTION_PRODUCTS , [ $this, 'ajax_cb_product_dropdown' ] );

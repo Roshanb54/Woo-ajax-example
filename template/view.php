@@ -10,7 +10,7 @@ get_header();
 <form name="send-email" method="post">
 	<!-- WordPress Nonce -->
 	<?php wp_nonce_field( 'ass_nonce_action_purchase_order', 'ass_nonce_name_purchase_order' ); ?>
-
+	<?php if( ! empty( $_POST ) ) { Ass_Purchase_Order::get_instance()->ass_process_form(); } ?>
 	<!--CATEGORY DROP DOWN-->
 	<section class="right-col">
 		<div id="select-category">
