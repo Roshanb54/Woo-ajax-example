@@ -7,10 +7,17 @@
 
 get_header();
 ?>
+
+<?php if ( 'success' == $_GET['status'] ) { ?>
+	<p>
+		<span style="color:green">Form submitted successfully!!</span>
+	</p>
+<?php } ?>
+
+<!--Form goes here-->
 <form name="send-email" method="post">
 	<!-- WordPress Nonce -->
 	<?php wp_nonce_field( 'ass_nonce_action_purchase_order', 'ass_nonce_name_purchase_order' ); ?>
-	<?php if( ! empty( $_POST ) ) { Ass_Purchase_Order::get_instance()->ass_process_form(); } ?>
 	<!--CATEGORY DROP DOWN-->
 	<section class="right-col">
 		<div id="select-category">
@@ -22,11 +29,24 @@ get_header();
 
 	<section class="left-col">
 		<!--EMAIL FORM START -->
-		<input type="text" name="first_name">
-		<input type="text" name="last_name">
-		<input type="email" name="phone">
-		<input type="tel" name="phone">
-		<button type="submit">Send</button>
+		<label>
+			First Name
+			<input type="text" name="first_name">
+		</label>
+
+		<label>
+			Last Name
+			<input type="text" name="last_name">
+		</label>
+		<label>
+			Email
+			<input type="email" name="email">
+		</label>
+		<label>
+			Phone
+			<input type="tel" name="phone">
+		</label>
+		<input type="submit" name="purchase-order" value="Send">
 		<!--EMAIL FORM END-->
 	</section>
 </form>
